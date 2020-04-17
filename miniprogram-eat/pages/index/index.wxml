@@ -1,0 +1,79 @@
+<!--引入时间控件页面-->
+<import src="../picker/picker.wxss"/>
+
+<view class="container">
+
+
+  <view class="bg-fff p-lr30 border-t">
+   
+
+    <view class="tui-picker-content ipt-wrap border-b flex ai-center">
+        <label for="" class="font14">日期</label>
+        <picker mode="date" value="{{dateSelectd}}" start="1975-01-01" end="2099-01-01" bindchange="changeDate">
+        <view class="tui-picker-detail ml40 flex1">
+          {{dateSelectd}}
+    </view>
+ </picker>
+</view>
+
+  <view class="ipt-wrap border-b flex ai-center">
+   <label for="" class="font14">部门</label>
+   <picker name="picker_hx" class="ml40 flex1 region" value="{{depts[dept_index].deptId}}"  range="{{depts}}" range-key="{{'deptName'}}"    
+   bindchange="bindPickerChange_hx">
+        <view class="picker" >
+         {{depts[dept_index].deptName}} 
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="ipt-wrap border-b flex ai-center">
+      <label for="" class="font14">姓名</label>
+        <picker name="picker_emp" class="ml40 flex1 region" value="{{emps[emp_index].empId}}"  range="{{emps}}" range-key="{{'empName'}}"    
+  bindchange="bindEmp" >
+        <view class="picker" >
+         {{emps[emp_index].empName}} 
+        </view>
+      </picker>
+    </view>
+
+
+
+
+  </view> 
+ <view class=" bg-fff p30 flex ai-center jc-sb mt20">
+    <view class="flex ai-center">
+      <label for="" class="font14">用餐时间</label>
+    </view>
+   <radio-group class="radio-group" bindchange="lunchOrDinerBind">    
+      <label class="radio" wx:for="{{lunchOrDiner}}">        
+      <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.name}}    
+      </label>
+    </radio-group>
+  </view>
+
+  <view class=" bg-fff p30 flex ai-center jc-sb mt20">
+    <view class="flex ai-center">
+      <label for="" class="font14">饭菜类型</label>
+    </view>
+    <radio-group class="radio-group" bindchange="mealTypeBind">    
+      <label class="radio" wx:for="{{mealType}}">        
+      <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.name}}    
+      </label>
+    </radio-group>
+   
+  </view>
+
+    <view class=" bg-fff p30 flex ai-center jc-sb mt20">
+    <view class="flex ai-center">
+      <label for="" class="font14">是否用餐</label>
+    </view>
+    <view class="flex">
+      <switch class="switch" bindchange="eatOrNotBind" color="#279efd" checked="checked"></switch>
+    </view>
+  </view>
+ 
+  <view class="combtn font16 color-fff _w100 bg-btn" data-url="../addNewAddress/addNewAddress" bindtap="saveNewAddress">
+    保存
+  </view>
+</view>
